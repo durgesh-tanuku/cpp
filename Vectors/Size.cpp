@@ -23,6 +23,8 @@ public:
 int main() {
     vector<Test> vec;
 
+    cout << "size of vec: " << vec.size() << endl;
+
     try {
         vec.resize(10);
     }
