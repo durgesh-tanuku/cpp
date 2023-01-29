@@ -77,8 +77,23 @@ void display(struct node* head) {
 	std::cout << std::endl;
 }
 
+void reverse(struct node** head) {
+	struct node* prev = NULL;
+	struct node* current = *head;
+	struct node* next;
+	
+	while(current != NULL) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*head = prev;
+}
+
 int main() {
 	struct node* head = NULL;
+	addBegin(&head, 30);
 	addLast(&head, 10);
 	addLast(&head, 20);
 	addLast(&head, 30);
@@ -86,14 +101,15 @@ int main() {
 	addBegin(&head, 50);
 	addBegin(&head, 60);
 	display(head);
-	delBegin(&head);
+	reverse(&head);
+	/*delBegin(&head);
 	delEnd(&head);
 	display(head);
 	delBegin(&head);
 	delEnd(&head);
 	display(head);
 	delBegin(&head);
-	delEnd(&head);
+	delEnd(&head);*/
 	display(head);
 	return 0;
 }
